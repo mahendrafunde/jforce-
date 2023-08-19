@@ -1,0 +1,48 @@
+<apex:page controller="LeadFormController" >
+    <apex:form id="leadForm" onsubmit="return validateForm();">
+        <apex:pageBlock title="Enter Lead Information">
+
+            <!-- Input Fields -->
+            <apex:pageBlockSection columns="2">
+                <apex:inputField value="{!lead.FirstName}" required="true" />
+                <apex:inputField value="{!Lead.Company}" required="true"/>
+                <apex:inputField value="{!lead.LastName}" required="true" />
+                <apex:inputField value="{!lead.Email}" required="true" />
+                <apex:inputField value="{!lead.MobilePhone}" required="true" />
+                <apex:inputField value="{!lead.Program_Offer__c}" required="true" />
+            </apex:pageBlockSection>
+
+            <!-- Submit Button -->
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Submit" action="{!submitLead}" />
+            </apex:pageBlockButtons>
+
+        </apex:pageBlock>
+    </apex:form>
+
+    <!-- JavaScript Validation -->
+    <script>
+        function validateEmail(email) {
+            return /\S+@\S+/.test(email);
+        }
+
+        function validateMobile(mobile) {
+            return mobile.length === 10 && !isNaN(mobile);
+        }
+
+        function validateForm() {
+            var email = document.querySelector('[id$=leadForm] input[name$=Email]').value;
+            var mobile = document.querySelector('[id$=leadForm] input[name$=MobilePhone]').value;
+
+            if (!validateEmail(email)) {
+                alert('Enter a valid Email address.');
+                return false;
+            }
+            if (!validateMobile(mobile)) {
+                alert('Mobile number should be exactly 10 digits.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</apex:page>

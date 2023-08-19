@@ -1,0 +1,16 @@
+<apex:page standardController="Counselor_Profile__c" extensions="CounselorProfileController">
+    <apex:form >
+        <apex:pageBlock title="Counselor Profile Form">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!save}" value="Save"/>
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockSection columns="2">
+                <apex:inputField value="{!Counselor_Profile__c.Name}" label="Name"/>
+                <apex:inputField value="{!Counselor_Profile__c.Email__c}" label="Email"/>
+                <apex:inputField value="{!Counselor_Profile__c.Mobile__c}" label="Mobile"/>
+                <apex:inputField value="{!Counselor_Profile__c.Program_Offer__c}" label="Program Offer"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
